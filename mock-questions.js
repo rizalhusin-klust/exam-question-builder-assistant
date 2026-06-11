@@ -236,3 +236,6 @@ if (typeof window !== 'undefined') {
 } else if (typeof module !== 'undefined') {
   module.exports = mockQuestionsDatabase;
 }
+
+export { mockQuestionsDatabase };
+

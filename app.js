@@ -2,6 +2,8 @@
 // Exam Question Builder Assistant - Application Logic (JavaScript)
 // ==========================================================================
 
+import { mockQuestionsDatabase } from './mock-questions.js';
+
 document.addEventListener("DOMContentLoaded", () => {
   // --- State Variables ---
   let questionsBank = [];
