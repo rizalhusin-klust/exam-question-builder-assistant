@@ -1,0 +1,14 @@
+{
+  "name": "examcraft-question-builder",
+  "version": "1.0.0",
+  "description": "ExamCraft - A premium teacher assistant to build, preview, and export classroom exams.",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.2.0"
+  }
+}
