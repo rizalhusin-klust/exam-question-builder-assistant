@@ -6,9 +6,13 @@ function Sidebar({ activeView, setActiveView, questionsBank, apiKey, theme, setT
   return (
     <aside id="app-sidebar">
       {/* Brand Header */}
-      <div className="brand-section">
-        <div className="brand-logo">E</div>
-        <span className="brand-name">ExamCraft</span>
+      <div className="brand-section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '8px', marginBottom: '32px' }}>
+        <img 
+          src="https://klust.edu.my/wp-content/uploads/2025/07/logo-klust.png" 
+          alt="KLUST Logo" 
+          className="klust-logo-img" 
+        />
+        <span className="brand-name" style={{ fontSize: '12px', fontWeight: '700', letterSpacing: '1px', textTransform: 'uppercase', opacity: 0.8, color: 'var(--text-secondary)' }}>Assessment Architect</span>
       </div>
 
       {/* Navigation Menu */}
