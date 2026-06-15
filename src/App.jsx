@@ -104,6 +104,8 @@ function App() {
             questionsBank={questionsBank}
             setQuestionsBank={setQuestionsBank}
             showToast={showToast}
+            theme={theme}
+            setTheme={setTheme}
           />
         );
       case "faster":
@@ -113,6 +115,8 @@ function App() {
             questionsBank={questionsBank}
             setQuestionsBank={setQuestionsBank}
             showToast={showToast}
+            theme={theme}
+            setTheme={setTheme}
           />
         );
       case "slower":

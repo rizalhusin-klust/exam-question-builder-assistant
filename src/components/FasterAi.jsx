@@ -132,7 +132,7 @@ Output ONLY clean, valid HTML for the marking scorecard using the exact Tailwind
     </table>
 </div>`;
 
-function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast }) {
+function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, setTheme }) {
   // --- States ---
   const [subject, setSubject] = useState("");
   const [level, setLevel] = useState("Degree");
@@ -154,9 +154,9 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast }) {
   const [markingSchemeHtml, setMarkingSchemeHtml] = useState("");
 
   const [toast, setToast] = useState({ message: '', type: 'success', visible: false });
-
   const paperRef = useRef(null);
   const markingRef = useRef(null);
+  const isDarkMode = theme === 'dark';
 
 
 
@@ -493,23 +493,18 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast }) {
         }
       `}} />
 
-      {/* App Header */}
-      <header className="bg-slate-900 text-white shadow-md px-6 py-4 mb-8 sticky top-0 z-40 no-print">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div className="flex items-center gap-4">
-            <div className="bg-blue-600 p-2 rounded-lg shadow-inner flex items-center justify-center">
-              <svg className="text-white h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
-              </svg>
-            </div>
-            <div>
-              <h1 className="text-xl font-bold tracking-tight text-slate-100 m-0">
-                Academic Question Auditor & Blueprint Planner
-              </h1>
-              <p className="text-sm text-slate-400 font-medium m-0 mt-0.5">Evaluate alignment, calculate metrics, and design comprehensive question-marking blueprints</p>
-            </div>
-          </div>
+      <header className="header-block no-print">
+        <div className="logo">FASTer Academic Question Auditor & Blueprint Planner</div>
+        <div className="header-controls">
+          <button 
+            type="button"
+            id="themeToggle" 
+            className="theme-toggle" 
+            title="Toggle Dark Mode"
+            onClick={() => setTheme(isDarkMode ? 'light' : 'dark')}
+          >
+            {isDarkMode ? '☀️' : '🌙'}
+          </button>
         </div>
       </header>
 

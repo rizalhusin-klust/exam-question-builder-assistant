@@ -666,8 +666,7 @@ IMPORTANT: Evaluate the score out of 100. Provide a 'score_summary' as an array 
         )}
       </div>
 
-      {/* Header */}
-      <header className="no-print">
+      <header className="header-block no-print">
         <div className="logo">SLOWer Academic Question Auditor & Blueprint Planner</div>
         <div className="header-controls">
           <button 

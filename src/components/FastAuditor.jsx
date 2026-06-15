@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-function FastAuditor({ apiKey, questionsBank, setQuestionsBank, showToast }) {
+function FastAuditor({ apiKey, questionsBank, setQuestionsBank, showToast, theme, setTheme }) {
+  const isDarkMode = theme === 'dark';
   // --- States ---
   const [subject, setSubject] = useState("");
   const [level, setLevel] = useState("Degree");
@@ -126,17 +127,24 @@ Output exactly 4 blocks separated by the delimiter [SPLIT]:
   };
 
   return (
-    <section className="page-view active" id="view-builder-pane">
-      <div className="view-split">
+    <section className="page-view active" id="view-builder-pane" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+      <header className="header-block no-print">
+        <div className="logo">FAST Academic Question Auditor & Blueprint Planner</div>
+        <div className="header-controls">
+          <button 
+            id="themeToggle" 
+            className="theme-toggle" 
+            title="Toggle Dark Mode"
+            onClick={() => setTheme(isDarkMode ? 'light' : 'dark')}
+          >
+            {isDarkMode ? '☀️' : '🌙'}
+          </button>
+        </div>
+      </header>
+
+      <div className="view-split" style={{ flexGrow: 1, overflow: 'hidden' }}>
         {/* Left Side: Audit Inputs */}
         <div className="builder-workspace" style={{ overflowY: 'auto' }}>
-          <div className="section-title-wrap">
-            <div>
-              <h1 className="section-title">FAST AI</h1>
-              <p className="section-desc">Audit, score, and format messy drafts into university-standard exam questions.</p>
-            </div>
-          </div>
-
           <div className="creator-form draft-setup-box" style={{ marginTop: '0' }}>
             <h2 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <svg className="text-blue-600 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '20px', height: '20px', flexShrink: 0 }}>
