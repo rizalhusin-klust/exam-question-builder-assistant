@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { createPortal } from 'react-dom';
 
 function SlowerAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, setTheme }) {
   // --- States ---
@@ -636,15 +635,13 @@ IMPORTANT: Evaluate the score out of 100. Provide a 'score_summary' as an array 
         }
 
         @media print {
-            body * { visibility: hidden !important; }
-            #root * { visibility: hidden !important; }
-            .print-section, .print-section * { visibility: visible !important; }
             .print-section {
                 display: block !important;
-                position: absolute !important;
-                left: 0 !important;
-                top: 0 !important;
                 width: 100% !important;
+                background: white !important;
+                color: black !important;
+                padding: 0 !important;
+                margin: 0 !important;
             }
             body { background: white !important; padding: 0 !important; }
             h2 { border-bottom: 2px solid #ccc !important; padding-bottom: 10px !important; margin-bottom: 20px !important; }
@@ -862,68 +859,65 @@ IMPORTANT: Evaluate the score out of 100. Provide a 'score_summary' as an array 
         </div>
       </div>
 
-      {/* Print Section (rendered via Portal to avoid parent visibility constraints) */}
-      {createPortal(
-        <div className="print-section">
-          <h2>Assessment Blueprint</h2>
-          
-          <div className="print-row">
-            <div className="print-label">Target Academic Level:</div>
-            <div>{studyLevel}</div>
-          </div>
-          
-          <div className="print-row" style={{ marginTop: '15px' }}>
-            <div className="print-label">Course Learning Outcome (CLO) Statement:</div>
-            <div>{clo || 'Not provided'}</div>
-          </div>
-          
-          <div className="print-row" style={{ marginTop: '15px' }}>
-            <div className="print-label">Assessment Question / Scenario:</div>
-            <div className="print-field" style={{ marginTop: '6px' }}>{rawQuestion}</div>
-          </div>
+      {/* Print Section (rendered directly to avoid portal positioning complexity) */}
+      <div className="print-section">
+        <h2>Assessment Blueprint</h2>
+        
+        <div className="print-row">
+          <div className="print-label">Target Academic Level:</div>
+          <div>{studyLevel}</div>
+        </div>
+        
+        <div className="print-row" style={{ marginTop: '15px' }}>
+          <div className="print-label">Course Learning Outcome (CLO) Statement:</div>
+          <div>{clo || 'Not provided'}</div>
+        </div>
+        
+        <div className="print-row" style={{ marginTop: '15px' }}>
+          <div className="print-label">Assessment Question / Scenario:</div>
+          <div className="print-field" style={{ marginTop: '6px' }}>{rawQuestion}</div>
+        </div>
 
-          {currentScore !== null && (
-            <div style={{ marginTop: '30px', borderTop: '2px solid #ccc', paddingTop: '20px' }}>
-              <h2>Quality Evaluation</h2>
-              <div className="print-score-badge" style={{ marginTop: '10px' }}>
-                Final Score: {currentScore.toFixed(0)} / 100
-              </div>
-              
-              <h3 style={{ marginTop: '25px' }}>Score Justification</h3>
-              <div className="print-field" style={{ marginTop: '10px', marginBottom: '20px' }}>
-                {advice}
-                {scoreSummary.length > 0 && (
-                  <ul className="summary-list" style={{ marginTop: '10px' }}>
-                    {scoreSummary.map((item, idx) => (
-                      <li key={idx} className="print-checklist-item">
-                        <span>☑️</span> {item}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-
-              {suggestedMarks && (
-                <>
-                  <h3 style={{ marginTop: '25px' }}>Marking Strategy ({suggestedMarks})</h3>
-                  <div className="print-field" style={{ marginTop: '10px' }}>
-                    {markingStrategy.length > 0 && (
-                      <ul className="summary-list">
-                        {markingStrategy.map((item, idx) => (
-                          <li key={idx} className="print-checklist-item">
-                            <span>⚖️</span> {item}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                </>
+        {currentScore !== null && (
+          <div style={{ marginTop: '30px', borderTop: '2px solid #ccc', paddingTop: '20px' }}>
+            <h2>Quality Evaluation</h2>
+            <div className="print-score-badge" style={{ marginTop: '10px' }}>
+              Final Score: {currentScore.toFixed(0)} / 100
+            </div>
+            
+            <h3 style={{ marginTop: '25px' }}>Score Justification</h3>
+            <div className="print-field" style={{ marginTop: '10px', marginBottom: '20px' }}>
+              {advice}
+              {scoreSummary.length > 0 && (
+                <ul className="summary-list" style={{ marginTop: '10px' }}>
+                  {scoreSummary.map((item, idx) => (
+                    <li key={idx} className="print-checklist-item">
+                      <span>☑️</span> {item}
+                    </li>
+                  ))}
+                </ul>
               )}
             </div>
-          )}
-        </div>,
-        document.body
-      )}
+
+            {suggestedMarks && (
+              <>
+                <h3 style={{ marginTop: '25px' }}>Marking Strategy ({suggestedMarks})</h3>
+                <div className="print-field" style={{ marginTop: '10px' }}>
+                  {markingStrategy.length > 0 && (
+                    <ul className="summary-list">
+                      {markingStrategy.map((item, idx) => (
+                        <li key={idx} className="print-checklist-item">
+                          <span>⚖️</span> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </>
+            )}
+          </div>
+        )}
+      </div>
 
     </div>
   );

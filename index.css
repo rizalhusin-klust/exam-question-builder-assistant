@@ -1570,6 +1570,8 @@ textarea.form-control {
   .paper-sheet {
     border: none !important;
     box-shadow: none !important;
+    background-color: transparent !important;
+    background: transparent !important;
     padding: 0 !important;
     margin: 0 !important;
     max-width: 100% !important;

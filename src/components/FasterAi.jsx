@@ -486,8 +486,7 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
             main { display: block !important; width: 100% !important; margin: 0 !important; padding: 0 !important; }
             .print-container { width: 100% !important; margin: 0 !important; padding: 0 !important; display: block !important; }
             .no-print { display: none !important; }
-            .print-container .no-print { 
-                display: block !important; 
+            .print-card { 
                 border: none !important;
                 box-shadow: none !important;
                 background: transparent !important;
@@ -497,6 +496,11 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
             .fast-blueprint-paper {
                 max-height: none !important;
                 overflow: visible !important;
+                background-color: transparent !important;
+            }
+            .paper-break {
+                page-break-before: always !important;
+                break-before: page !important;
             }
         }
       `}} />
@@ -669,10 +673,10 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
 
           {/* Populated Results Dashboard */}
           {status === 'success' && (
-            <div id="resultsState" className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-fade-in no-print">
+            <div id="resultsState" className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-fade-in">
                 
               {/* Block 1: Cognitive Level */}
-              <div className="bg-white border-l-4 border-l-blue-500 border-solid border-y border-r border-slate-200 p-5 rounded-r-xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-white border-l-4 border-l-blue-500 border-solid border-y border-r border-slate-200 p-5 rounded-r-xl shadow-sm hover:shadow-md transition-shadow no-print">
                 <h3 className="text-blue-700 font-bold text-xs uppercase tracking-wider flex items-center gap-2 mb-2 m-0">
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <polygon points="12 2 2 7 12 12 22 7 12 2" />
@@ -687,7 +691,7 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
               </div>
 
               {/* Block 2: Target Suitability */}
-              <div className="bg-white border-l-4 border-l-emerald-500 border-solid border-y border-r border-slate-200 p-5 rounded-r-xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-white border-l-4 border-l-emerald-500 border-solid border-y border-r border-slate-200 p-5 rounded-r-xl shadow-sm hover:shadow-md transition-shadow no-print">
                 <h3 className="text-emerald-700 font-bold text-xs uppercase tracking-wider flex items-center gap-2 mb-2 m-0">
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10" />
@@ -702,7 +706,7 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
               </div>
               
               {/* Block 3: Rigor Alignment Summary Score */}
-              <div className="bg-white border-l-4 border-l-indigo-500 border-solid border-y border-r border-slate-200 p-5 rounded-r-xl shadow-sm sm:col-span-2 hover:shadow-md transition-shadow">
+              <div className="bg-white border-l-4 border-l-indigo-500 border-solid border-y border-r border-slate-200 p-5 rounded-r-xl shadow-sm sm:col-span-2 hover:shadow-md transition-shadow no-print">
                 <h3 className="text-indigo-700 font-bold text-xs uppercase tracking-wider flex items-center gap-2 mb-2 m-0">
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="18" y1="20" x2="18" y2="10" />
@@ -717,7 +721,7 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
               </div>
 
               {/* Block 4: Overall Rating */}
-              <div className="bg-gradient-to-br from-purple-50 to-white border border-solid border-purple-200 p-6 rounded-xl shadow-sm sm:col-span-2 flex justify-between items-center gap-6">
+              <div className="bg-gradient-to-br from-purple-50 to-white border border-solid border-purple-200 p-6 rounded-xl shadow-sm sm:col-span-2 flex justify-between items-center gap-6 no-print">
                 <div className="flex-1">
                   <h3 className="text-purple-800 font-bold text-xs uppercase tracking-wider flex items-center gap-2 mb-3 m-0">
                     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -737,7 +741,7 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
               </div>
 
               {/* Block 5: Suggestions */}
-              <div className="bg-amber-50 border border-solid border-amber-200 p-5 rounded-xl shadow-sm sm:col-span-2">
+              <div className="bg-amber-50 border border-solid border-amber-200 p-5 rounded-xl shadow-sm sm:col-span-2 no-print">
                 <h3 className="text-amber-800 font-bold text-xs uppercase tracking-wider flex items-center gap-2 mb-2 m-0">
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5 5 0 0 0 8 8c0 1 .4 2.5 1.5 3.5.7.8 1.3 1.5 1.5 2.5" />
@@ -755,8 +759,8 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
               <div className="print-container space-y-8 sm:col-span-2 mt-4 w-full">
                   
                 {/* Formatted Paper Output */}
-                <div className="bg-white rounded-xl shadow-sm border border-solid border-slate-200 overflow-hidden no-print transition-all">
-                  <div className="bg-slate-50 border-b border-solid border-slate-200 px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-4 print:hidden">
+                <div className="bg-white rounded-xl shadow-sm border border-solid border-slate-200 overflow-hidden transition-all print-card">
+                  <div className="bg-slate-50 border-b border-solid border-slate-200 px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-4 no-print">
                     <div>
                       <h3 className="font-bold text-slate-800 flex items-center gap-2 m-0">
                         <svg className="h-4 w-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -796,8 +800,8 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
                 </div>
 
                 {/* Marking Matrix Output */}
-                <div className="bg-white rounded-xl shadow-sm border border-solid border-slate-200 overflow-hidden paper-break no-print">
-                  <div className="bg-slate-50 border-b border-solid border-slate-200 px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-4 print:hidden">
+                <div className="bg-white rounded-xl shadow-sm border border-solid border-slate-200 overflow-hidden paper-break print-card">
+                  <div className="bg-slate-50 border-b border-solid border-slate-200 px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-4 no-print">
                     <div>
                       <h3 className="font-bold text-slate-800 flex items-center gap-2 m-0">
                         <svg className="h-4 w-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
