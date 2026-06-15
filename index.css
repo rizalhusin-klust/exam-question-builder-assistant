@@ -1651,12 +1651,15 @@ textarea.form-control {
 
   [data-active-view="fast"] #app-main,
   [data-active-view="fast"] .page-view,
+  [data-active-view="fast"] .view-split,
   [data-active-view="fast"] .builder-preview,
   [data-active-view="faster"] #app-main,
   [data-active-view="faster"] .page-view,
+  [data-active-view="faster"] .view-split,
   [data-active-view="faster"] .builder-preview,
   [data-active-view="slower"] #app-main,
   [data-active-view="slower"] .page-view,
+  [data-active-view="slower"] .view-split,
   [data-active-view="slower"] .builder-preview {
     display: block !important;
     width: 100% !important;

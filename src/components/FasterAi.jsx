@@ -482,16 +482,22 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
 
         /* Print Override inside component */
         @media print {
-            body * { visibility: hidden !important; }
-            #root * { visibility: hidden !important; }
-            #view-faster-pane, #view-faster-pane * { visibility: visible !important; }
-            #view-faster-pane { position: absolute !important; left: 0 !important; top: 0 !important; width: 100% !important; margin: 0 !important; padding: 0 !important; height: auto !important; overflow: visible !important; display: block !important; }
-            .print-container, .print-container * { visibility: visible !important; }
+            body, #root, #app-layout, #app-main { background: white !important; color: black !important; padding: 0 !important; margin: 0 !important; }
+            main { display: block !important; width: 100% !important; margin: 0 !important; padding: 0 !important; }
             .print-container { width: 100% !important; margin: 0 !important; padding: 0 !important; display: block !important; }
-            .paper-break { page-break-before: always !important; margin-top: 40px !important; }
             .no-print { display: none !important; }
-            .print-container .no-print { display: block !important; }
-            .paper-sheet { border: none !important; box-shadow: none !important; padding: 0 !important; background: transparent !important; }
+            .print-container .no-print { 
+                display: block !important; 
+                border: none !important;
+                box-shadow: none !important;
+                background: transparent !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .fast-blueprint-paper {
+                max-height: none !important;
+                overflow: visible !important;
+            }
         }
       `}} />
 
@@ -636,7 +642,7 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
             
           {/* Empty State / Dashboard View */}
           {status === 'empty' && (
-            <div id="emptyState" className="h-full min-h-[500px] flex flex-col items-center justify-center text-center p-8 border-2 border-dashed border-solid border-slate-300 rounded-2xl bg-slate-50/50">
+            <div id="emptyState" className="h-full min-h-[500px] flex flex-col items-center justify-center text-center p-8 border-2 border-dashed border-solid border-slate-300 rounded-2xl bg-slate-50/50 no-print">
               <div className="bg-white p-4 rounded-full shadow-sm mb-4 border border-solid border-slate-100 flex items-center justify-center">
                 <svg className="h-10 w-10 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
@@ -652,7 +658,7 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
 
           {/* Skeletons for Loading State */}
           {status === 'loading' && (
-            <div id="loadingState" className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-pulse">
+            <div id="loadingState" className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-pulse no-print">
               <div className="h-32 bg-slate-200 rounded-xl"></div>
               <div className="h-32 bg-slate-200 rounded-xl"></div>
               <div className="h-40 bg-slate-200 rounded-xl sm:col-span-2"></div>
@@ -663,7 +669,7 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
 
           {/* Populated Results Dashboard */}
           {status === 'success' && (
-            <div id="resultsState" className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-fade-in">
+            <div id="resultsState" className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-fade-in no-print">
                 
               {/* Block 1: Cognitive Level */}
               <div className="bg-white border-l-4 border-l-blue-500 border-solid border-y border-r border-slate-200 p-5 rounded-r-xl shadow-sm hover:shadow-md transition-shadow">

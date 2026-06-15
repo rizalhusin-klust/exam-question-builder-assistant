@@ -628,8 +628,8 @@ IMPORTANT: Evaluate the score out of 100. Provide a 'score_summary' as an array 
             transform: translateY(0);
         }
 
-        .slower-ai-container .print-section {
-            display: none;
+        .print-section {
+            display: none !important;
             padding: 40px;
             background: white;
             color: black;
