@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-function SlowerAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, setTheme }) {
+function SlowerAi({ isActive, apiKey, questionsBank, setQuestionsBank, showToast, theme, setTheme }) {
   // --- States ---
   const [studyLevel, setStudyLevel] = useState("Bachelor's Degree");
   const [feedbackTone, setFeedbackTone] = useState("balanced");
@@ -249,7 +249,7 @@ IMPORTANT: Evaluate the score out of 100. Provide a 'score_summary' as an array 
   const isDarkMode = theme === 'dark';
 
   return (
-    <div className={`slower-ai-container ${isDarkMode ? 'dark' : ''}`} style={{ height: '100%', width: '100%', overflowY: 'auto', paddingBottom: '96px', backgroundColor: 'var(--bg-color)', color: 'var(--text-color)', fontFamily: "'Segoe UI', system-ui, -apple-system, sans-serif" }}>
+    <div className={`page-view ${isActive ? 'active' : ''} slower-ai-container ${isDarkMode ? 'dark' : ''}`} style={{ display: isActive ? 'block' : 'none', height: '100%', width: '100%', overflowY: 'auto', paddingBottom: '96px', backgroundColor: 'var(--bg-color)', color: 'var(--text-color)', fontFamily: "'Segoe UI', system-ui, -apple-system, sans-serif" }}>
       
       {/* Local styles */}
       <style dangerouslySetInnerHTML={{ __html: `

@@ -84,55 +84,6 @@ function App() {
     }, 3800);
   };
 
-  const renderActiveView = () => {
-    switch (activeView) {
-
-      case "fast":
-        return (
-          <FastAuditor
-            apiKey={GEMINI_API_KEY}
-            questionsBank={questionsBank}
-            setQuestionsBank={setQuestionsBank}
-            showToast={showToast}
-            theme={theme}
-            setTheme={setTheme}
-          />
-        );
-      case "faster":
-        return (
-          <FasterAi
-            apiKey={GEMINI_API_KEY}
-            questionsBank={questionsBank}
-            setQuestionsBank={setQuestionsBank}
-            showToast={showToast}
-            theme={theme}
-            setTheme={setTheme}
-          />
-        );
-      case "slower":
-        return (
-          <SlowerAi
-            apiKey={GEMINI_API_KEY}
-            questionsBank={questionsBank}
-            setQuestionsBank={setQuestionsBank}
-            showToast={showToast}
-            theme={theme}
-            setTheme={setTheme}
-          />
-        );
-      case "bank":
-        return (
-          <ExamPaper
-            questionsBank={questionsBank}
-            setQuestionsBank={setQuestionsBank}
-            showToast={showToast}
-          />
-        );
-      default:
-        return null;
-    }
-  };
-
   return (
     <div id="app-layout" data-active-view={activeView}>
       {/* Sidebar Component */}
@@ -147,7 +98,39 @@ function App() {
 
       {/* Main Content Area */}
       <main id="app-main">
-        {renderActiveView()}
+        <FastAuditor
+          isActive={activeView === "fast"}
+          apiKey={GEMINI_API_KEY}
+          questionsBank={questionsBank}
+          setQuestionsBank={setQuestionsBank}
+          showToast={showToast}
+          theme={theme}
+          setTheme={setTheme}
+        />
+        <FasterAi
+          isActive={activeView === "faster"}
+          apiKey={GEMINI_API_KEY}
+          questionsBank={questionsBank}
+          setQuestionsBank={setQuestionsBank}
+          showToast={showToast}
+          theme={theme}
+          setTheme={setTheme}
+        />
+        <SlowerAi
+          isActive={activeView === "slower"}
+          apiKey={GEMINI_API_KEY}
+          questionsBank={questionsBank}
+          setQuestionsBank={setQuestionsBank}
+          showToast={showToast}
+          theme={theme}
+          setTheme={setTheme}
+        />
+        <ExamPaper
+          isActive={activeView === "bank"}
+          questionsBank={questionsBank}
+          setQuestionsBank={setQuestionsBank}
+          showToast={showToast}
+        />
       </main>
 
       {/* Global Notification Toast Container */}

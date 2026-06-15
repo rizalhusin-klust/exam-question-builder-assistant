@@ -132,7 +132,7 @@ Output ONLY clean, valid HTML for the marking scorecard using the exact Tailwind
     </table>
 </div>`;
 
-function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, setTheme }) {
+function FasterAi({ isActive, apiKey, questionsBank, setQuestionsBank, showToast, theme, setTheme }) {
   // --- States ---
   const [subject, setSubject] = useState("");
   const [level, setLevel] = useState("Degree");
@@ -370,7 +370,7 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
   };
 
   return (
-    <section className="page-view active bg-slate-50 text-slate-800 selection:bg-blue-200" id="view-faster-pane" style={{ display: 'block', overflowY: 'auto', height: '100%', width: '100%', paddingBottom: '96px' }}>
+    <section className={`page-view ${isActive ? 'active' : ''} bg-slate-50 text-slate-800 selection:bg-blue-200`} id="view-faster-pane" style={{ display: isActive ? 'block' : 'none', overflowY: 'auto', height: '100%', width: '100%', paddingBottom: '96px' }}>
       
       {/* Toast Notification Container */}
       <div 

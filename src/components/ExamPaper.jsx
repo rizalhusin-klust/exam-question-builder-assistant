@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function ExamPaper({ questionsBank, setQuestionsBank, showToast }) {
+function ExamPaper({ isActive, questionsBank, setQuestionsBank, showToast }) {
   // --- Search & Filters ---
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSubject, setSelectedSubject] = useState("");
@@ -134,7 +134,7 @@ function ExamPaper({ questionsBank, setQuestionsBank, showToast }) {
   });
 
   return (
-    <section className="page-view active" id="view-bank-pane">
+    <section className={`page-view ${isActive ? 'active' : ''}`} id="view-bank-pane" style={{ display: isActive ? 'flex' : 'none' }}>
       {/* Left Sidebar: Questions list & Filters */}
       <div className="bank-list-sidebar no-print">
         <h2 className="section-title">Question Bank</h2>

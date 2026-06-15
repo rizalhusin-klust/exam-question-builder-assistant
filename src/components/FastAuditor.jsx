@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function FastAuditor({ apiKey, questionsBank, setQuestionsBank, showToast, theme, setTheme }) {
+function FastAuditor({ isActive, apiKey, questionsBank, setQuestionsBank, showToast, theme, setTheme }) {
   const isDarkMode = theme === 'dark';
   // --- States ---
   const [subject, setSubject] = useState("");
@@ -127,7 +127,7 @@ Output exactly 4 blocks separated by the delimiter [SPLIT]:
   };
 
   return (
-    <section className="page-view active" id="view-builder-pane" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <section className={`page-view ${isActive ? 'active' : ''}`} id="view-builder-pane" style={{ display: isActive ? 'flex' : 'none', flexDirection: 'column', height: '100%' }}>
       <header className="header-block no-print">
         <div className="logo">FAST Academic Question Auditor & Blueprint Planner</div>
         <div className="header-controls">
