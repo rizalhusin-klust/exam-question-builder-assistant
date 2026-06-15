@@ -166,12 +166,13 @@ Output exactly 4 blocks separated by the delimiter [SPLIT]:
               </div>
 
               <div className="form-group">
-                <label>Academic Level</label>
+                <label>Target Academic Level</label>
                 <select
                   className="form-control"
                   value={level}
                   onChange={(e) => setLevel(e.target.value)}
                 >
+                  <option value="Certificate">Certificate</option>
                   <option value="Diploma">Diploma</option>
                   <option value="Degree">Degree</option>
                   <option value="Master">Master</option>
