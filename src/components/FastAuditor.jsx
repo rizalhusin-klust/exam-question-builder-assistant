@@ -166,7 +166,7 @@ Output exactly 4 blocks separated by the delimiter [SPLIT]:
               </div>
 
               <div className="form-group">
-                <label>Target Academic Level</label>
+                <label>Academic Level</label>
                 <select
                   className="form-control"
                   value={level}

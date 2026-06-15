@@ -538,7 +538,7 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Target Academic Level</label>
+                  <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Academic Level</label>
                   <select 
                     id="level" 
                     className="w-full text-sm p-3 bg-slate-50 border border-solid border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none appearance-none"
