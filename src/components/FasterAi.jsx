@@ -138,6 +138,7 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
   const [level, setLevel] = useState("Degree");
   const [targetMark, setTargetMark] = useState("");
   const [clo, setClo] = useState("");
+  const [cloStatement, setCloStatement] = useState("");
   const [plo, setPlo] = useState("");
   const [rawQuestion, setRawQuestion] = useState("");
   const [localApiKey, setLocalApiKey] = useState("");
@@ -238,6 +239,7 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
 - **Intended Program Level:** ${level}
 - **Course/Subject:** ${subject || "General Module"}
 - **Target Course Learning Outcome (CLO):** ${clo || "Unspecified"}
+- **Course Learning Outcome Statement:** ${cloStatement || "None provided"}
 - **Target Program Learning Outcome (PLO):** ${plo || "Unspecified"}
 - **Explicitly Suggested Target Mark:** ${targetMark || "None provided"}
 - **Raw Question Text:** ${rawQuestion}`;
@@ -536,7 +538,7 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Target Level</label>
+                  <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Target Academic Level</label>
                   <select 
                     id="level" 
                     className="w-full text-sm p-3 bg-slate-50 border border-solid border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none appearance-none"
@@ -585,6 +587,18 @@ function FasterAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
                     onChange={(e) => setPlo(e.target.value)}
                   />
                 </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Course Learning Outcome (CLO) Statement</label>
+                <input 
+                  type="text" 
+                  id="cloStatement" 
+                  placeholder="e.g., Apply normalization techniques to optimize database performance." 
+                  className="w-full text-sm p-3 bg-slate-50 border border-solid border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none"
+                  value={cloStatement}
+                  onChange={(e) => setCloStatement(e.target.value)}
+                />
               </div>
 
               <div>
