@@ -121,7 +121,7 @@ function SlowerAi({ apiKey, questionsBank, setQuestionsBank, showToast, theme, s
 
 IMPORTANT: Evaluate the score out of 100. Provide a 'score_summary' as an array of specific checklist items explaining exactly why the question earned its score, including at least one check item on VBE/values. ALSO, based on the cognitive load and complexity, determine the 'suggested_marks' (e.g., '10 Marks') and outline a step-by-step 'marking_strategy' (array of strings) detailing how to allocate partial or full marks. ${toneInstruction}`;
     
-    const userPrompt = `Study Level (MQF): ${studyLevel}\nCourse Learning Outcome: ${clo || 'Not provided'}\n\nDraft Question:\n${rawQuestion}`;
+    const userPrompt = `Study Level (MQF): ${studyLevel}\nCourse Learning Outcome (CLO) Statement: ${clo || 'Not provided'}\n\nDraft Question:\n${rawQuestion}`;
 
     const runRequest = async (modelName) => {
       const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${keyToUse}`;
@@ -720,7 +720,7 @@ IMPORTANT: Evaluate the score out of 100. Provide a 'score_summary' as an array 
           </div>
 
           <div className="form-group">
-            <label htmlFor="clo">Course Learning Outcome (CLO)</label>
+            <label htmlFor="clo">Course Learning Outcome (CLO) Statement</label>
             <input 
               type="text" 
               id="clo" 
@@ -872,7 +872,7 @@ IMPORTANT: Evaluate the score out of 100. Provide a 'score_summary' as an array 
           </div>
           
           <div className="print-row" style={{ marginTop: '15px' }}>
-            <div className="print-label">Course Learning Outcome (CLO):</div>
+            <div className="print-label">Course Learning Outcome (CLO) Statement:</div>
             <div>{clo || 'Not provided'}</div>
           </div>
           
