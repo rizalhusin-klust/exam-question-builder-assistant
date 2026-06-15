@@ -694,13 +694,14 @@ IMPORTANT: Evaluate the score out of 100. Provide a 'score_summary' as an array 
           </div>
           
           <div className="form-group">
-            <label htmlFor="studyLevel">Study Level (MQF)</label>
+            <label htmlFor="studyLevel">Target Academic Level</label>
             <select 
               id="studyLevel"
               value={studyLevel}
               onChange={(e) => setStudyLevel(e.target.value)}
             >
-              <option value="Certificate/Diploma">Certificate/Diploma</option>
+              <option value="Certificate">Certificate</option>
+              <option value="Diploma">Diploma</option>
               <option value="Bachelor's Degree">Bachelor's Degree</option>
               <option value="Master's Degree">Master's Degree</option>
             </select>
@@ -867,7 +868,7 @@ IMPORTANT: Evaluate the score out of 100. Provide a 'score_summary' as an array 
           <h2>Assessment Blueprint</h2>
           
           <div className="print-row">
-            <div className="print-label">Study Level (MQF):</div>
+            <div className="print-label">Target Academic Level:</div>
             <div>{studyLevel}</div>
           </div>
           
