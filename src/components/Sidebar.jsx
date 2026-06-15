@@ -18,15 +18,6 @@ function Sidebar({ activeView, setActiveView, questionsBank, apiKey, theme, setT
       {/* Navigation Menu */}
       <nav style={{ flexGrow: 1 }}>
         <ul className="nav-menu">
-          <li className={`nav-item ${activeView === 'builder' ? 'active' : ''}`}>
-            <button type="button" onClick={() => setActiveView('builder')}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 4.5v15m7.5-7.5h-15" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span>Question Builder</span>
-            </button>
-          </li>
-          
           <li className={`nav-item ${activeView === 'fast' ? 'active' : ''}`}>
             <button type="button" onClick={() => setActiveView('fast')}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

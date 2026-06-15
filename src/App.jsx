@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
-import QuestionBuilder from './components/QuestionBuilder';
 import FastAuditor from './components/FastAuditor';
 import FasterAi from './components/FasterAi';
 import SlowerAi from './components/SlowerAi';
@@ -57,7 +56,7 @@ function App() {
     return stored ? JSON.parse(stored) : defaultBankQuestions;
   });
 
-  const [activeView, setActiveView] = useState("builder");
+  const [activeView, setActiveView] = useState("fast");
 
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("examcraft_theme") || "light";
@@ -87,16 +86,7 @@ function App() {
 
   const renderActiveView = () => {
     switch (activeView) {
-      case "builder":
-        return (
-          <QuestionBuilder
-            questionsBank={questionsBank}
-            setQuestionsBank={setQuestionsBank}
-            apiKey={GEMINI_API_KEY}
-            showToast={showToast}
-            switchView={setActiveView}
-          />
-        );
+
       case "fast":
         return (
           <FastAuditor
