@@ -1611,3 +1611,203 @@ textarea.form-control {
     color: black !important;
   }
 }
+
+/* Print utility helpers */
+.print-only {
+  display: none !important;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
+
+/* --- FAST AI Print Overrides --- */
+@media print {
+  [data-active-view="fast"] #app-sidebar,
+  [data-active-view="fast"] .builder-workspace,
+  [data-active-view="fast"] .toast-host,
+  [data-active-view="fast"] .builder-preview > *:not(.print-print),
+  [data-active-view="fast"] .builder-preview > div:not(.print-print),
+  [data-active-view="faster"] #app-sidebar,
+  [data-active-view="faster"] .builder-workspace,
+  [data-active-view="faster"] .toast-host,
+  [data-active-view="faster"] .builder-preview > *:not(.print-print),
+  [data-active-view="faster"] .builder-preview > div:not(.print-print),
+  [data-active-view="slower"] #app-sidebar,
+  [data-active-view="slower"] .builder-workspace,
+  [data-active-view="slower"] .toast-host,
+  [data-active-view="slower"] .builder-preview > *:not(.print-print),
+  [data-active-view="slower"] .builder-preview > div:not(.print-print) {
+    display: none !important;
+  }
+
+  [data-active-view="fast"] #app-main,
+  [data-active-view="fast"] .page-view,
+  [data-active-view="fast"] .builder-preview,
+  [data-active-view="faster"] #app-main,
+  [data-active-view="faster"] .page-view,
+  [data-active-view="faster"] .builder-preview,
+  [data-active-view="slower"] #app-main,
+  [data-active-view="slower"] .page-view,
+  [data-active-view="slower"] .builder-preview {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  [data-active-view="fast"] .paper-sheet,
+  [data-active-view="faster"] .paper-sheet,
+  [data-active-view="slower"] .paper-sheet {
+    display: block !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    color: black !important;
+  }
+}
+
+/* --- Formatted Blueprint Booklet Scroll constraints --- */
+.fast-blueprint-paper {
+  max-height: 480px;
+  overflow: auto;
+}
+
+@media print {
+  .fast-blueprint-paper {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
+
+/* --- Clean Table Styling inside Paper Sheets --- */
+.paper-sheet table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.paper-sheet th,
+.paper-sheet td {
+  border: 1px solid #cbd5e1;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.paper-sheet th {
+  background-color: #f8fafc;
+  font-weight: 700;
+}
+
+@media print {
+  .paper-sheet table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+  .paper-sheet th,
+  .paper-sheet td {
+    border: 1px solid black !important;
+    color: black !important;
+  }
+  .paper-sheet th {
+    background-color: #f1f5f9 !important;
+  }
+}
+
+/* --- FASTer AI Marking Scorecard Styling --- */
+.marking-sheet-container .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+  font-size: 13px;
+}
+
+.marking-sheet-container .flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+.marking-sheet-container .font-bold.text-slate-500.text-xs.uppercase {
+  font-weight: 700;
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.marking-sheet-container .text-slate-800 {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.marking-sheet-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.marking-sheet-container th,
+.marking-sheet-container td {
+  border: 1px solid var(--border-color);
+  padding: 10px 12px;
+}
+
+.marking-sheet-container tr:hover {
+  background-color: var(--bg-panel);
+}
+
+.marking-sheet-container td[colspan="2"] {
+  text-align: right;
+  font-weight: bold;
+}
+
+/* --- Question Draft Setup Box styling --- */
+.draft-setup-box {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%) !important;
+  border: 1px solid #bfdbfe !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 24px !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: var(--transition-normal);
+}
+
+[data-theme="dark"] .draft-setup-box {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+  border-color: #1e40af !important;
+}
+
+/* Ensure the header inside the draft setup box matches the theme text */
+.draft-setup-box h2,
+.draft-setup-box .panel-title {
+  color: var(--text-primary) !important;
+}
+
+/* Override the builder-workspace and builder-preview widths in FAST AI (view-builder-pane) */
+#view-builder-pane .builder-workspace {
+  flex: 1.0 !important;
+}
+#view-builder-pane .builder-preview {
+  flex: 2.0 !important;
+}
+
+/* Ensure all main scroll containers have ample bottom padding so buttons are never cut off */
+.builder-workspace,
+.builder-preview,
+.exam-preview-workspace,
+.bank-list-sidebar {
+  padding-bottom: 96px !important;
+}
+
+
