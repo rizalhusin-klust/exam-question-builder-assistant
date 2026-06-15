@@ -1218,6 +1218,8 @@ textarea.form-control {
   font-family: 'Inter', sans-serif;
   transition: box-shadow var(--transition-normal);
   position: relative;
+  box-sizing: border-box;
+  overflow-x: auto;
 }
 
 [data-theme="dark"] .paper-sheet {
@@ -1574,6 +1576,7 @@ textarea.form-control {
     min-height: 0 !important;
     width: 100% !important;
     display: block !important;
+    overflow: visible !important;
   }
   
   .paper-title-input {
@@ -1673,6 +1676,7 @@ textarea.form-control {
     margin: 0 !important;
     width: 100% !important;
     color: black !important;
+    overflow: visible !important;
   }
 }
 
@@ -1691,11 +1695,15 @@ textarea.form-control {
 
 /* --- Clean Table Styling inside Paper Sheets --- */
 .paper-sheet table {
-  width: 100%;
+  width: 100% !important;
+  table-layout: auto !important;
   border-collapse: collapse;
   margin: 12px 0;
   font-size: 13px;
   line-height: 1.5;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
 }
 
 .paper-sheet th,
@@ -1703,6 +1711,10 @@ textarea.form-control {
   border: 1px solid #cbd5e1;
   padding: 8px 12px;
   text-align: left;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
 }
 
 .paper-sheet th {
@@ -1710,15 +1722,31 @@ textarea.form-control {
   font-weight: 700;
 }
 
+/* Ensure code blocks and raw text inside table cells wrap properly */
+.paper-sheet td pre,
+.paper-sheet td code,
+.paper-sheet th pre,
+.paper-sheet th code {
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
 @media print {
   .paper-sheet table {
     width: 100% !important;
     border-collapse: collapse !important;
+    table-layout: auto !important;
   }
   .paper-sheet th,
   .paper-sheet td {
     border: 1px solid black !important;
     color: black !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
   }
   .paper-sheet th {
     background-color: #f1f5f9 !important;
