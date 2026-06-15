@@ -154,7 +154,7 @@ Output exactly 4 blocks separated by the delimiter [SPLIT]:
               Question Draft Setup
             </h2>
             <div className="form-grid">
-              <div className="form-group">
+              <div className="form-group full-width">
                 <label>Course Name / Subject</label>
                 <input
                   type="text"
@@ -165,7 +165,7 @@ Output exactly 4 blocks separated by the delimiter [SPLIT]:
                 />
               </div>
 
-              <div className="form-group">
+              <div className="form-group full-width">
                 <label>Academic Level</label>
                 <select
                   className="form-control"
